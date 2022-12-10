@@ -69,7 +69,6 @@ Show2dArray(SortedRows);
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, 
 // которая будет находить строку с наименьшей суммой элементов.
-
 //Например, задан массив:
 /*
 1 4 7 2
@@ -83,7 +82,72 @@ Show2dArray(SortedRows);
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с 
 //наименьшей суммой элементов: 1 строка
 
+/*
+int [,] New2dArray (int rows, int columns, int minValue, int maxValue)
+{
+    int [,] createdArray = new int [rows, columns];
 
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            createdArray [i,j] = new Random().Next(minValue, maxValue + 1);
+    return createdArray;
+}
+
+void Show2dArray (int [,] array)
+{
+    Console.WriteLine();
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");  
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+void MinSumRowIndex(int [,] array1)
+{
+    int minRow = 0;
+    int minSumRow = 0;
+    int sumRow = 0;
+
+    for (int i = 0; i < array1.GetLength(1); i++)
+    {
+        minRow += array1[0, i];
+    }
+    for (int i = 0; i < array1.GetLength(0); i++)
+    {
+        for (int j = 0; j < array1.GetLength(1); j++) 
+            sumRow += array1[i, j];
+        if (sumRow < minRow)
+        {
+            minRow = sumRow;
+            minSumRow = i;
+        }
+        sumRow = 0;             
+    }
+    Console.WriteLine($"Row No. {minSumRow} with the smallest sum {minRow} in this array.");  
+}
+
+Console.WriteLine("Input count of rows: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of columns: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input min possible value: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input max possible value: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+if (m != n)
+{
+    int [,] newArray = New2dArray(m, n, min, max);
+    Show2dArray(newArray);
+    MinSumRowIndex(newArray);   
+}
+else Console.WriteLine("Define a rectangular array!");
+*/
 
 // Задача 58(дополнительно): Задайте две матрицы. Напишите программу, 
 //которая будет находить произведение двух матриц.
@@ -118,3 +182,45 @@ Show2dArray(SortedRows);
 10 09 08 07
 */
 
+void Show2dArray (int [,] array)
+{
+    Console.WriteLine();
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");  
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+void SpiralSquareArray (int [,] array)
+{
+    int i = 0, j = 0;
+    int element = 1;
+    int n = array.GetLength(0);
+    for (int l = 0; l < n * n; l++)
+    {
+        int k = 0;
+        do { array[i, j++] = element++; } while (++k < n - 1);
+        for (k = 0; k < n - 1; k++) 
+            array[i++, j] = element++;
+            for (k = 0; k < n - 1; k++) 
+                array[i, j--] = element++;
+                for (k = 0; k < n - 1; k++) 
+                    array[i--, j] = element++;
+        ++i; ++j;
+        n = n < 2 ? 0 : n - 2;
+    }
+}
+
+Console.WriteLine("Input the number of rows/columns of the square array : ");
+int n = Convert.ToInt32(Console.ReadLine());
+int m = n;
+
+int [,] squareArray = new int [n, m];
+
+SpiralSquareArray(squareArray);
+Show2dArray(squareArray);
