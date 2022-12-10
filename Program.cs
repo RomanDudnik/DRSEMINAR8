@@ -231,6 +231,44 @@ Show2dArray(result2DArray);
 26(1,0,1) 55(1,1,1)
 */
 
+int[,,] Create3DArray(int x, int y, int z) 
+{
+    int[,,] array = new int[x, y, z];
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {      
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                array[i, j, k] = new Random().Next(0,100);    
+            }            
+        }
+    }
+    Console.WriteLine($"Array Length of {x} x {y} x {z}"); 
+    for (int k = 0; k < array.GetLength(2); k++)
+    {       
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write($"{array[i, j, k]}({i},{j},{k})  ");    
+            }            
+            Console.WriteLine();
+        }
+    }
+    return array;
+}
+
+Console.WriteLine("Input count of x: ");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of y: ");
+int y = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of y: ");
+int z = Convert.ToInt32(Console.ReadLine());
+
+Create3DArray(x,y,z);
+
 
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
