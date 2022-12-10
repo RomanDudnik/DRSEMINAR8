@@ -260,14 +260,14 @@ int[,,] Create3DArray(int x, int y, int z)
     return array;
 }
 
-Console.WriteLine("Input count of x: ");
-int x = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input count of y: ");
-int y = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input count of y: ");
-int z = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of row1: ");
+int row1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of count: ");
+int count = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of row2: ");
+int row2 = Convert.ToInt32(Console.ReadLine());
 
-Create3DArray(x,y,z);
+Create3DArray(row1, count, row2);
 
 
 
