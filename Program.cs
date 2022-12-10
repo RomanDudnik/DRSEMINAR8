@@ -208,7 +208,9 @@ void SpiralSquareArray (int [,] array)
     for (int l = 0; l < n * n; l++)
     {
         int k = 0;
-        do { array[i, j++] = element++; } while (++k < n - 1);
+        do 
+        array[i, j++] = element++;
+        while (++k < n - 1);
         for (k = 0; k < n - 1; k++) 
             array[i++, j] = element++;
             for (k = 0; k < n - 1; k++) 
