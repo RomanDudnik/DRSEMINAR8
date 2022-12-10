@@ -159,6 +159,66 @@ else Console.WriteLine("Define a rectangular array!");
 18 20
 15 18
 */
+/*
+int [,] New2dArray (int rows, int columns, int minValue, int maxValue)
+{
+    int [,] createdArray = new int [rows, columns];
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            createdArray [i,j] = new Random().Next(minValue, maxValue + 1);
+    return createdArray;
+}
+
+void Show2dArray (int [,] array)
+{
+    Console.WriteLine();
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");  
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+void Multi2dArray(int[,] firstArray, int[,] secondArray, int[,] resultArray)
+{
+  for (int i = 0; i < resultArray.GetLength(0); i++)
+  {
+    for (int j = 0; j < resultArray.GetLength(1); j++)
+    {
+      int sum = 0;
+      for (int k = 0; k < firstArray.GetLength(1); k++)
+      {
+        sum += firstArray[i,k] * secondArray[k,j];
+      }
+      resultArray[i,j] = sum;
+    }
+  }
+}
+
+
+
+Console.WriteLine("Input count of rows: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input count of columns: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("The minimum possible value for the elements of the array: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Ithe maximum possible value for the elements of the array: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+
+int [,] first2dArray = New2dArray(m, n, min, max);
+int [,] second2dArray = New2dArray(m, n, min, max);
+int [,] result2DArray = New2dArray(m, n, min, max);
+Multi2dArray(first2dArray, second2dArray, result2DArray);
+Show2dArray(first2dArray); Show2dArray(second2dArray);
+Show2dArray(result2DArray);
+*/
 
 
 // Задача 60(дополнительно): ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
@@ -181,8 +241,7 @@ else Console.WriteLine("Define a rectangular array!");
 11 16 15 06
 10 09 08 07
 */
-
-
+/*
 void Show2dArray (int [,] array)
 {
     Console.WriteLine();
@@ -202,15 +261,17 @@ void Show2dArray (int [,] array)
 
 void SpiralSquareArray (int [,] array)
 {
-    int i = 0, j = 0;
-    int element = 1;
     int n = array.GetLength(0);
+    int i = 0;
+    int j = 0;
+    int element = 1;
+    
     for (int l = 0; l < n * n; l++)
     {
         int k = 0;
-        do 
         array[i, j++] = element++;
-        while (++k < n - 1);
+        while (++k < n - 1)
+            array[i, j++] = element++;
         for (k = 0; k < n - 1; k++) 
             array[i++, j] = element++;
             for (k = 0; k < n - 1; k++) 
@@ -224,11 +285,10 @@ void SpiralSquareArray (int [,] array)
     }
 }
 
-Console.WriteLine("Input the number of rows/columns of the square array : ");
-int n = Convert.ToInt32(Console.ReadLine());
+int n = 4;  //Работает с массивом 2x2; 4х4; 6x6; 8x8.
 int m = n;
-
 int [,] squareArray = new int [n, m];
 
 SpiralSquareArray(squareArray);
 Show2dArray(squareArray);
+*/
