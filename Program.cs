@@ -230,7 +230,7 @@ Show2dArray(result2DArray);
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 int[,,] Create3DArray(int x, int y, int z) 
 {
     int[,,] array = new int[x, y, z];
@@ -268,8 +268,7 @@ Console.WriteLine("Input count of row2: ");
 int row2 = Convert.ToInt32(Console.ReadLine());
 
 Create3DArray(row1, count, row2);
-
-
+*/
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
