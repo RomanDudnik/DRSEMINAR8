@@ -182,6 +182,7 @@ else Console.WriteLine("Define a rectangular array!");
 10 09 08 07
 */
 
+
 void Show2dArray (int [,] array)
 {
     Console.WriteLine();
@@ -189,7 +190,10 @@ void Show2dArray (int [,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i, j] + " ");  
+            if (array[i, j] > 0 && array[i, j] < 10)
+            Console.Write(("0") + (array[i, j] + " "));
+            else
+            Console.Write(array[i, j] + " ");
         }
         Console.WriteLine();
     }
@@ -212,7 +216,9 @@ void SpiralSquareArray (int [,] array)
                 for (k = 0; k < n - 1; k++) 
                     array[i--, j] = element++;
         ++i; ++j;
-        n = n < 2 ? 0 : n - 2;
+        if (n < 2)
+            n = n*1;
+        else n = n - 2;
     }
 }
 
